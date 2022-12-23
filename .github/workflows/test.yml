@@ -3,6 +3,14 @@ on: workflow_dispatch
 jobs:
   job1:
     runs-on: ubuntu-latest
+    outputs:
+      output1: ${{ steps.step1.outputs.test }}
     steps:
     - name: Step 1
-      run: echo 'this is a test'
+      run: echo "test=dave is awesome!" >> $GITHUB_OUTPUT
+  job2:
+    runs-on: ubuntu-latest
+    needs: job1
+    steps:
+    - name: Output the output
+      run: echo ${{ needs.job1.outputs.output1 }}
