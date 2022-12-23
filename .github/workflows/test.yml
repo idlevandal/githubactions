@@ -4,10 +4,10 @@ jobs:
   job1:
     runs-on: ubuntu-latest
     outputs:
-      output1: ${{ steps.step1.outputs.test }}
+      output1: ${{ steps.step-id.outputs.test }}
     steps:
     - name: Step 1
-      id: step1
+      id: step-id
       run: echo "test=dave is awesome!" >> $GITHUB_OUTPUT
   job2:
     runs-on: ubuntu-latest
